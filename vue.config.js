@@ -11,6 +11,6 @@ module.exports = {
         raw: true
       })
   },
-  publicPath: '/ktguy-blog/',
+  publicPath: "/ktguy-blog",
   outputDir: 'docs'
 }
