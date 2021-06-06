@@ -44,7 +44,7 @@
 
       <v-toolbar-title>ktguy tech blog</v-toolbar-title>
     </v-app-bar>
-
+    
     <v-main>
       <v-breadcrumbs
         divider=">"
@@ -61,7 +61,7 @@
       drawer: null,
       items: [
         { title: 'Home', icon: 'mdi-view-dashboard', to:'/' },
-        { title: 'github', icon: 'mdi-image', href:"https://github.com/ktguy0723" },
+        { title: 'github', icon: 'mdi-github', href:"https://github.com/ktguy0723" },
       ],
     }),
     computed: {

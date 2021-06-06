@@ -1,5 +1,5 @@
 <template>
-  <div class="blog markdown-body">
+  <div class="blog markdown-body px-4">
     <router-view />
     <v-btn
       color="primary"
@@ -8,7 +8,6 @@
     >
       <v-icon>mdi-keyboard-backspace</v-icon> &nbsp;BACK
     </v-btn>
-
   </div>
 </template>
 
