@@ -1,24 +1,6 @@
 # ktguy-blog
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# 構成
+- assets/markdowns : 記事 
+- assets/images : 記事画像
+- assets/blogs.json : 見出し
