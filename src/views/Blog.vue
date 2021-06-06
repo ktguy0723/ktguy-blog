@@ -1,5 +1,5 @@
 <template>
-  <div class="blog">
+  <div class="blog markdown-body">
     <router-view />
     <v-btn
       color="primary"

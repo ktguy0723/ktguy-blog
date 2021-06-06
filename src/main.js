@@ -4,6 +4,7 @@ import router from './router'
 import vuetify from './plugins/vuetify'
 
 import 'highlight.js/styles/github.css';
+import 'github-markdown-css'
 
 Vue.config.productionTip = false
 
