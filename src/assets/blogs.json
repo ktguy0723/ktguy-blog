@@ -1,6 +1,12 @@
 {
   "2021": [
     {
+      "id": "typescript-introduction",
+      "date": "2021/6/8",
+      "title": "TypeScript の基本",
+      "description": "TypeScriptの基本"
+    },
+    {
       "id": "create-an-app-wiith-vuetify",
       "date": "2021/6/6",
       "title": "Vuetify: Create an App with Vue JS",

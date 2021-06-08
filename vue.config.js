@@ -12,5 +12,5 @@ module.exports = {
       })
   },
   publicPath: "/ktguy-blog",
-  outputDir: 'docs'
+  // outputDir: 'docs',
 }
