@@ -220,3 +220,145 @@ $ tsc
 ```
 
 
+
+## 3. クラス
+
+```ts
+// classはオブジェクトの設計図
+// classは型になる
+abstract class Person {
+  // field
+  // public, private, protexted readonly修飾子が使える
+  // public: クラス外でも使用可能
+  // private: クラス内のみ
+  // protected: クラス内及び継承先のみ
+  // readonlyは初期化、コンストラクタ内では書き込み可能
+  public readonly name: string  // publicは省略できる
+  protected age: number // private: class内でしか使えない
+
+  // staticの定義
+  static species = 'Homo sapiens'
+  static isAdult(age: number) {
+    if (age > 17) return true
+    else return false
+  }
+
+  // 初期化処理 
+  constructor(initName : string, initAge: number) {
+    this.name = initName + Person.species //staticのアクセス方法
+    this.age = initAge
+  }
+
+  // 上記のfield, 初期化処理は以下の書き方でもOK
+  // constructor(public readonly name: string, protected age: number) {
+  // }
+
+  // methods 
+  greeting(this: Person): void {
+    console.log(`Hello! My name is ${this.name}, I'm ${this.age} years old`)
+    this.explainJob()
+  }
+  // methodでもpublic, privateを使える
+  private incrementAge() {
+    this.age += 1
+  }
+
+  // 抽象メソッド（継承先で必ず宣言する）
+  abstract explainJob(): void
+}
+
+// 抽象クラスではインスタンス化できない
+// new Person('Quill', 23).greeting()
+
+// extends: 継承
+class Teacher extends Person{
+  // getter 
+  get subject() {
+    return this._subject
+  }
+  // setter (getterと同じ型になる)
+  set subject(value) {
+    this._subject = value
+  }
+  // [tips] private constructor(): singleton パターンにできる
+  constructor(name: string, age: number, private _subject: string) {
+    // super: 継承元のコンストラクタを指す（継承時必須）
+    super(name, age)
+  }
+
+  // methods 
+  greeting(this: Teacher): void {
+    console.log(`Hello! My name is ${this.name}, I'm ${this.age} years old. I teach ${this.subject}.`)
+  }
+
+  // 抽象メソッドによる宣言
+  explainJob() {
+    console.log(`I teach ${this.subject}`)
+  }
+}
+
+const teacher = new Teacher('ktguy', 27, 'English')
+
+teacher.greeting()
+teacher.subject = 'Math'
+console.log(teacher.subject)
+```
+
+
+
+## Interface
+
+```ts
+// interface
+// Objectの構造のみを定義
+
+// ※ type aliasはオブジェクト以外の構造も定義できる
+// type Human = {
+//   name: string
+//   age: number
+// }
+
+// interfaceで関数の方を表現できる
+// これと同じ意味
+// type addFunc = (num1: number, num2: number) => number
+interface addFanc {
+  (num1: number, num2: number): number;
+}
+
+interface Nameable {
+  // readonly: 書き込み禁止
+  readonly name: string
+  // ?をつけるとあってもなくてもよい (オプショナルプロパティ)
+  nickName?: string
+  test?(message?: string): void
+}
+
+// extendsでinterfaceを継承できる
+interface Human extends Nameable {
+  name: string // Nameableのnameを上書きできる（Nameableのnameが代入できる場合）
+  age: number
+  // greeting: (message: string) => void と同じ
+  greeting(message: string): void;
+}
+
+const human: Human = {
+  name: 'Quill',
+  age: 38,
+  greeting(message: string) {
+    console.log(message)
+  }
+}
+
+// implements で継承する
+class Developer implements Human {
+  constructor(public name: string, public age: number, public experience: number){}
+  greeting(message: string) {
+    console.log('Hello!')
+  }
+}
+
+const user: Human = new Developer('Quill', 23, 4)
+console.log(user.age, user.name, user.greeting('hoge'))
+// console.log(user.experience) にはアクセスできない : 構造的部分型
+```
+
