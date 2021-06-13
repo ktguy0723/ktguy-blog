@@ -2,6 +2,7 @@
 node_modules
 /docs
 /dist
+/src/assets/markdowns/memo
 
 
 # local env files

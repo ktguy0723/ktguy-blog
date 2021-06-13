@@ -306,7 +306,7 @@ console.log(teacher.subject)
 
 
 
-## Interface
+## 4. Interface
 
 ```ts
 // interface
@@ -361,4 +361,81 @@ const user: Human = new Developer('Quill', 23, 4)
 console.log(user.age, user.name, user.greeting('hoge'))
 // console.log(user.experience) にはアクセスできない : 構造的部分型
 ```
+
+
+
+## 5. and more
+
+### 5.1. インターセクション型
+
+```ts
+type Mix = Engineer & Blogger
+```
+
+
+
+### 5.2. Type guard
+
+```ts
+if(typeof x === 'string') //xはstring？
+if('role' in nomadWorker) //nomadWorker(:Object)にrole(:key)があるか？
+if(pet instanceof Bird)   // petインスタンスはBirdクラスのインスタンスか？
+```
+
+
+
+### 5.3. TagつきUnion
+
+統一できるタグをつける
+
+```ts
+class Dog {kind: 'dog' = 'dog'}
+class Bird{kind: 'bird' = 'bird'}
+```
+
+
+
+### 5.4. 型アサーション
+
+```ts
+// HTMLElement => HTMLInputElementに変換
+// 方法1
+const input = <HTMLInputElement>document.getElementById('input')
+// 方法2 おすすめ
+const input = document.getElementById('input') as HTMLInputElement
+```
+
+
+
+### 5.5. Non-null assertion operator !
+
+nullではないを表現は`!`をつける
+
+```ts
+const input = document.getElementById('input')!
+```
+
+
+
+### 5.6. インデックスシグネチャ
+
+```ts
+interface Designer {
+    name: string
+    [index: string]: string 
+}
+const designer: Designer = {
+    name: 'Quill',
+    role: 'web',
+    hoge: 'huga'
+}
+```
+
+
+
+### 5.7. 関数のオーバーロード
+
+
+
+### 5.8. Optional Chaining
 
