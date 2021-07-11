@@ -1,9 +1,8 @@
 .DS_Store
 node_modules
-/docs
 /dist
 /src/assets/markdowns/memo
-
+deploy.sh
 
 # local env files
 .env.local
