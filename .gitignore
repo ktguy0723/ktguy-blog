@@ -2,7 +2,7 @@
 node_modules
 /dist
 /src/assets/markdowns/memo
-deploy.sh
+/src/assets/deploy.sh
 
 # local env files
 .env.local
